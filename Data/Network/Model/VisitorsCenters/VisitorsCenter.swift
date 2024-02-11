@@ -103,7 +103,9 @@ extension VisitorCenter {
 		directionsUrl: "",
 		operatingHours: [],
 		addresses: [],
-		images: [],
+		images: [
+			.init(credit: "", title: "", altText: "", caption: "", url: "https://www.nps.gov/common/uploads/structured_data/9568A7E6-AEA4-9A20-B64A77235A9F4277.jpg")
+		],
 		lastIndexedDate: "",
 		relevanceScore: 0
 	)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: - Error handling
 struct VisitorsCentersView: View {
 	@State private var viewModel: VisitorsCenterViewModel = VisitorsCenterViewModel()
 	let park: Park
@@ -15,10 +16,18 @@ struct VisitorsCentersView: View {
 		ScrollView {
 			LazyVStack {
 				ForEach(viewModel.centers) { center in
-					Text(center.name)
+					VisitorsCenterRowView(center: center)
+						.onAppear {
+							if center.id == viewModel.centers.last!.id {
+								viewModel.loadMore(for: park.id)
+							}
+						}
 				}
 			}
 		}
+		.padding(.horizontal)
+		.navigationTitle("Visitors Centers")
+		.navigationBarTitleDisplayMode(.inline)
 		.task {
 			do {
 				try await viewModel.getData(for: park.id)

@@ -22,7 +22,7 @@ final class ParksViewModel {
 	}
 
 	@MainActor
-	func loadMore(_ park: Park) {
+	func loadMore() {
 		Task {
 			startFrom += 20
 			let moreParks = try await repository.getParks(startFrom: startFrom).data

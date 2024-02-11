@@ -45,6 +45,7 @@ struct ParkDetailsView: View {
 				Spacer()
 			}
 		}
+		.padding(.horizontal)
 		.navigationTitle(park.name)
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {

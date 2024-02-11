@@ -18,7 +18,7 @@ struct ParksView: View {
 							ParkRowView(park: park)
 								.onAppear {
 									if park.id == viewModel.parks.last!.id {
-										viewModel.loadMore(park)
+										viewModel.loadMore()
 									}
 								}
 						}
@@ -35,8 +35,6 @@ struct ParksView: View {
 				}
 			}
 			.navigationDestination(for: Park.self) { park in
-//				ParkDetailsWrapper(park: park)
-//					.navigationTitle(park.name)
 				ParkDetailsView(park: park)
 			}
 		}

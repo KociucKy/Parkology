@@ -25,7 +25,7 @@ final class VisitorsCenterViewModel {
 
 	// TODO: - Maybe change this to async func
 	@MainActor
-	func loadMore(_ center: VisitorCenter, for parkId: String) {
+	func loadMore(for parkId: String) {
 		Task {
 			startFrom += 20
 			let moreCenters = try await repository.getCenters(for: parkId, startFrom: startFrom).data
