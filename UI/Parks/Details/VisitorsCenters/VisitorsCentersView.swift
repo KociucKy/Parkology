@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-// TODO: - Error handling
 struct VisitorsCentersView: View {
+	@EnvironmentObject var networkMonitor: NetworkMonitor
 	@State private var viewModel: VisitorsCenterViewModel = VisitorsCenterViewModel()
 	@State private var showError: Bool = false
+	@State private var showConnectionError: Bool = false
 	let park: Park
 	
 	var body: some View {
@@ -54,6 +55,14 @@ struct VisitorsCentersView: View {
 			}
 		} message: {
 			Text(viewModel.error?.errorDescription ?? "")
+		}
+		.onChange(of: networkMonitor.isConnected) { _, newValue in
+			if !newValue {
+				showConnectionError = true
+			}
+		}
+		.fullScreenCover(isPresented: $showConnectionError) {
+			NoNetworkView()
 		}
 	}
 }

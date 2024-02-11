@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ParkingLotsView: View {
+	@EnvironmentObject var networkMonitor: NetworkMonitor
 	@State private var viewModel: ParkingLotsViewModel = ParkingLotsViewModel()
 	@State private var showError: Bool = false
+	@State private var showConnectionError: Bool = false
 	let park: Park
 
 	var body: some View {
@@ -53,6 +55,14 @@ struct ParkingLotsView: View {
 			}
 		} message: {
 			Text(viewModel.error?.errorDescription ?? "")
+		}
+		.onChange(of: networkMonitor.isConnected) { _, newValue in
+			if !newValue {
+				showConnectionError = true
+			}
+		}
+		.fullScreenCover(isPresented: $showConnectionError) {
+			NoNetworkView()
 		}
 	}
 }

@@ -5,10 +5,11 @@
 
 import SwiftUI
 
-// TODO: - Add empty state
 struct ParksView: View {
+	@EnvironmentObject var networkMonitor: NetworkMonitor
 	@State private var viewModel: ParksViewModel = ParksViewModel()
 	@State private var showError: Bool = false
+	@State private var showConnectionError: Bool = false
 	
 	var body: some View {
 		NavigationStack {
@@ -44,6 +45,14 @@ struct ParksView: View {
 					showError = true
 				}
 			}
+			.onChange(of: networkMonitor.isConnected) { _, newValue in
+				if !newValue {
+					showConnectionError = true
+				}
+			}
+			.fullScreenCover(isPresented: $showConnectionError) {
+				NoNetworkView()
+			}
 			.alert("Something went wrong", isPresented: $showError) {
 				Button("Try again") {
 					showError = false
@@ -61,4 +70,5 @@ struct ParksView: View {
 
 #Preview {
 	ParksView()
+		.environmentObject(NetworkMonitor())
 }

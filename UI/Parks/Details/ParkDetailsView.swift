@@ -9,9 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct ParkDetailsView: View {
+	@EnvironmentObject var networkMonitor: NetworkMonitor
 	@Environment(\.modelContext) private var context
 	@Query private var favoriteParks: [SDPark]
 	@State private var isInFavorites: Bool = false
+	@State private var showConnectionError: Bool = false
 	let park: Park
 	
 	var body: some View {
@@ -77,6 +79,14 @@ struct ParkDetailsView: View {
 			} else {
 				isInFavorites = false
 			}
+		}
+		.onChange(of: networkMonitor.isConnected) { _, newValue in
+			if !newValue {
+				showConnectionError = true
+			}
+		}
+		.fullScreenCover(isPresented: $showConnectionError) {
+			NoNetworkView()
 		}
 	}
 
