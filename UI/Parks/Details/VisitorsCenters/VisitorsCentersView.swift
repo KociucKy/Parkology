@@ -46,7 +46,7 @@ struct VisitorsCentersView: View {
 				showError = true
 			}
 		}
-		.alert("", isPresented: $showError) {
+		.alert("Something went wrong", isPresented: $showError) {
 			Button("Try again") {
 				Task {
 					try? await viewModel.getData(for: park.parkCode)
