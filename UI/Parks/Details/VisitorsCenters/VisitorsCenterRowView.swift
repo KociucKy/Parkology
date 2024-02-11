@@ -20,20 +20,26 @@ struct VisitorsCenterRowView: View {
 						.clipShape(.rect(cornerRadius: 10))
 						.frame(width: 100, height: 100)
 				} placeholder: {
-					Color.gray
-						.opacity(0.5)
-						.frame(width: 100, height: 100)
-						.clipShape(.rect(cornerRadius: 10))
-						.overlay {
-							Image(systemName: "photo.fill")
-								.font(.largeTitle)
-						}
+					placeholderImage
 				}
+			} else {
+				placeholderImage
 			}
 			Text(center.name)
 				.font(.headline)
 			Spacer()
 		}
+	}
+
+	private var placeholderImage: some View {
+		Color.gray
+			.opacity(0.5)
+			.frame(width: 100, height: 100)
+			.clipShape(.rect(cornerRadius: 10))
+			.overlay {
+				Image(systemName: "photo.fill")
+					.font(.largeTitle)
+			}
 	}
 }
 
