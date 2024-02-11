@@ -8,7 +8,7 @@ import Observation
 
 //TODO: - Error Handling
 @Observable
-class ParksViewModel {
+final class ParksViewModel {
 	private(set) var parks: [Park] = []
 
 	@ObservationIgnored
