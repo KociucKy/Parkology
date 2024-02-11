@@ -34,6 +34,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFV-mB-qOB">
+                                <rect key="frame" x="302" y="375" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,11 +50,14 @@
                             <constraint firstItem="hL0-yL-mug" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="gQH-7X-eJM"/>
                             <constraint firstItem="TJT-3X-88u" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="hqH-hE-sp5"/>
                             <constraint firstItem="z2n-gg-fZt" firstAttribute="top" secondItem="TJT-3X-88u" secondAttribute="bottom" constant="16" id="kU3-Ck-XLk"/>
+                            <constraint firstItem="nFV-mB-qOB" firstAttribute="top" secondItem="TJT-3X-88u" secondAttribute="bottom" constant="16" id="kWI-bm-0W8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nFV-mB-qOB" secondAttribute="trailing" constant="16" id="lce-2p-Qds"/>
                             <constraint firstItem="hL0-yL-mug" firstAttribute="top" secondItem="z2n-gg-fZt" secondAttribute="bottom" constant="16" id="tLx-jy-Vtg"/>
                             <constraint firstItem="TJT-3X-88u" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xhd-YY-8OE"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToFavoritesButton" destination="nFV-mB-qOB" id="MBk-m3-WoB"/>
                         <outlet property="descriptionLabel" destination="hL0-yL-mug" id="yji-E1-6zx"/>
                         <outlet property="imageView" destination="TJT-3X-88u" id="Xtz-p5-7KD"/>
                         <outlet property="titleLabel" destination="z2n-gg-fZt" id="5bH-mk-Ic4"/>

@@ -9,7 +9,8 @@ import MapKit
 class ParkDetailsViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var descriptionLabel: UILabel!
+	@IBOutlet weak var addToFavoritesButton: UIButton!
+	@IBOutlet var descriptionLabel: UILabel!
 
     var park: Park!
 
@@ -17,6 +18,7 @@ class ParkDetailsViewController: UIViewController {
         super.viewDidLoad()
         setImg()
         setLabels()
+		setButton()
     }
 
     private func setLabels() {
@@ -29,4 +31,10 @@ class ParkDetailsViewController: UIViewController {
         let url = park.images.first!.url
         imageView.load(url: URL(string: url)!)
     }
+
+	private func setButton() {
+		addToFavoritesButton.setTitle("Add to favorites", for: .normal)
+		addToFavoritesButton.setImage(UIImage(systemName: "plus"), for: .normal)
+		addToFavoritesButton.setTitleColor(.parkPurple, for: .normal)
+	}
 }
