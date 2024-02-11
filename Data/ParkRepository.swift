@@ -6,7 +6,7 @@
 import Foundation
 
 struct ParkRepository {
-    func getParks(page: Int = 0) async throws -> ParkResponse {
-        try await NetworkService.getParks(page: page)
+    func getParks(startFrom: Int = 0) async throws -> ParkResponse {
+        try await NetworkService.getParks(startFrom: startFrom)
     }
 }

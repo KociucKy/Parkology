@@ -7,8 +7,6 @@ import UIKit
 import MapKit
 
 class ParkDetailsViewController: UIViewController {
-
-	// TODO: - IBOutlets are not hooked to the storyboard
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
