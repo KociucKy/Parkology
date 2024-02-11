@@ -27,6 +27,9 @@ struct ParkingLotsView: View {
 				}
 			}
 		}
+		.navigationTitle("Parking lots")
+		.navigationBarTitleDisplayMode(.inline)
+		.padding(.horizontal)
 		.task {
 			do {
 				try await viewModel.getData(for: park.parkCode)
