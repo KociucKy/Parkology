@@ -1,8 +1,8 @@
+////
+////  Park.swift
+////  Parkology
+////
 //
-//  Park.swift
-//  Parkology
-//
-
 import Foundation
 
 struct Park: Codable, Identifiable, Hashable {
@@ -115,5 +115,5 @@ struct Park: Codable, Identifiable, Hashable {
 }
 
 extension Park {
-    static let preview: Park = Park(activities: [], addresses: [], contacts: .init(phoneNumbers: [], emailAddresses: []), description: "This is sample park", designation: "", directionsInfo: "", directionsUrl: "", entranceFees: [], entrancePasses: [], fullName: "Amazing Park in the Amazing Place", id: "0", images: [.init(credit: "", altText: "", title: "", caption: "", url: "https://www.nps.gov/common/uploads/structured_data/3C861078-1DD8-B71B-0B774A242EF6A706.jpg")], latLong: "0.00", name: "Amazing Place", operatingHours: [], parkCode: "park", relevanceScore: 5, states: "ca", topics: [], url: "", weatherInfo: "")
+	static let preview: Park = Park(activities: [], addresses: [], contacts: .init(phoneNumbers: [], emailAddresses: []), description: "This is sample park", designation: "", directionsInfo: "", directionsUrl: "", entranceFees: [], entrancePasses: [], fullName: "Amazing Park in the Amazing Place", id: "0", images: [.init(credit: "", altText: "", title: "", caption: "", url: "https://www.nps.gov/common/uploads/structured_data/3C861078-1DD8-B71B-0B774A242EF6A706.jpg")], latLong: "0.00", name: "Amazing Place", operatingHours: [], parkCode: "park", relevanceScore: 5, states: "ca", topics: [], url: "", weatherInfo: "")
 }

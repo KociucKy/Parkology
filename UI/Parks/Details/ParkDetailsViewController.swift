@@ -8,6 +8,7 @@ import MapKit
 
 class ParkDetailsViewController: UIViewController {
 
+	// TODO: - IBOutlets are not hooked to the storyboard
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -25,6 +26,7 @@ class ParkDetailsViewController: UIViewController {
         descriptionLabel.text = park.description
     }
 
+	// TODO: - Handle force unwrapping 
     private func setImg() {
         let url = park.images.first!.url
         imageView.load(url: URL(string: url)!)

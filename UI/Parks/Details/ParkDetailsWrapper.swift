@@ -10,6 +10,7 @@ struct ParkDetailsWrapper: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> ParkDetailsViewController {
         let controller = UIStoryboard(name: "ParkDetails", bundle: Bundle.main).instantiateViewController(identifier: "ParkDetails")
+		// TODO: Force type casting -> research the correct way to do it
         let vc = controller as! ParkDetailsViewController
         vc.park = park
         return vc
