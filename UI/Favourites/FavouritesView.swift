@@ -17,7 +17,7 @@ struct FavouritesView: View {
 				if !favoriteParks.isEmpty{
 					List {
 						ForEach(favoriteParks) { park in
-							ParkSpecificInfoRowView(imageUrl: park.imageUrl, name: park.name)
+							SingleInfoView(imageUrl: park.imageUrl, name: park.name)
 						}
 						.onDelete { indexSet in
 							indexSet.forEach { index in

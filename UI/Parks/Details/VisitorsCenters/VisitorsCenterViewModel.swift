@@ -12,6 +12,7 @@ import Observation
 @Observable
 final class VisitorsCenterViewModel {
 	private(set) var centers: [VisitorCenter] = []
+	var error: NetworkingError?
 
 	@ObservationIgnored
 	private var repository: VisitorsCenterRepository = VisitorsCenterRepository()
@@ -20,16 +21,23 @@ final class VisitorsCenterViewModel {
 
 	@MainActor
 	func getData(for parkId: String) async throws {
-		centers = try await repository.getCenters(for: parkId).data
+		do {
+			centers = try await repository.getCenters(for: parkId).data
+		} catch {
+			self.error = error as? NetworkingError
+		}
 	}
 
-	// TODO: - Maybe change this to async func
 	@MainActor
 	func loadMore(for parkId: String) {
 		Task {
-			startFrom += 20
-			let moreCenters = try await repository.getCenters(for: parkId, startFrom: startFrom).data
-			centers.append(contentsOf: moreCenters)
+			do {
+				startFrom += 20
+				let moreCenters = try await repository.getCenters(for: parkId, startFrom: startFrom).data
+				centers.append(contentsOf: moreCenters)
+			} catch {
+				self.error = error as? NetworkingError
+			}
 		}
 	}
 }

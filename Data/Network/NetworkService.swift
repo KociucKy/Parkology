@@ -6,8 +6,6 @@
 import Foundation
 
 struct NetworkService {
-
-
 	static func getParks(startFrom: Int) async throws -> ParkResponse {
 		return try await Network.getData(path: "parks", queryItems: [
 			"api_key": Keys.getApiKey(),

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ParkSpecificInfoRowView: View {
+struct SingleInfoView: View {
 	let imageUrl: String?
 	let name: String
 	
@@ -22,9 +22,16 @@ struct ParkSpecificInfoRowView: View {
 						.frame(width: 100, height: 100)
 				} placeholder: {
 					placeholderImage
+						.overlay {
+							ProgressView()
+						}
 				}
 			} else {
 				placeholderImage
+					.overlay {
+						Image(systemName: "photo.fill")
+							.font(.largeTitle)
+					}
 			}
 			Text(name)
 				.font(.headline)
@@ -37,13 +44,9 @@ struct ParkSpecificInfoRowView: View {
 			.opacity(0.5)
 			.frame(width: 100, height: 100)
 			.clipShape(.rect(cornerRadius: 10))
-			.overlay {
-				Image(systemName: "photo.fill")
-					.font(.largeTitle)
-			}
 	}
 }
 
 #Preview {
-	ParkSpecificInfoRowView(imageUrl: "", name: "Cool place")
+	SingleInfoView(imageUrl: "", name: "Cool place")
 }

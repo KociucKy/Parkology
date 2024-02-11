@@ -17,15 +17,17 @@ struct ParkRowView: View {
 						.frame(maxWidth: .infinity)
 						.frame(height: 330)
 				} placeholder: {
-					Color.gray
-						.opacity(0.5)
-						.frame(maxWidth: .infinity)
-						.frame(height: 330)
+					placeholderImage
 						.overlay {
-							Image(systemName: "photo.fill")
-								.font(.largeTitle)
+							ProgressView()
 						}
 				}
+			} else {
+				placeholderImage
+					.overlay {
+						Image(systemName: "photo.fill")
+							.font(.largeTitle)
+					}
 			}
 			Text(park.name)
 				.font(.headline)
@@ -36,6 +38,13 @@ struct ParkRowView: View {
 		}
 		.frame(height: 400)
 		.clipShape(.rect(cornerRadius: 16))
+	}
+
+	private var placeholderImage: some View {
+		Color.gray
+			.opacity(0.5)
+			.frame(maxWidth: .infinity)
+			.frame(height: 330)
 	}
 }
 
