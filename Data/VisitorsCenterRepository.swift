@@ -8,7 +8,7 @@
 import Foundation
 
 struct VisitorsCenterRepository {
-	func getCenters(startFrom: Int = 0) async throws -> VisitorsCenterResponse {
-		try await NetworkService.getCenters(startFrom: startFrom)
+	func getCenters(for parkId: String, startFrom: Int = 0) async throws -> VisitorsCenterResponse {
+		try await NetworkService.getCenters(for: parkId, startFrom: startFrom)
 	}
 }

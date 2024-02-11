@@ -32,6 +32,14 @@ struct ParkDetailsView: View {
 						.fontWeight(.semibold)
 					Text(park.description)
 						.font(.subheadline)
+					NavigationLink {
+						VisitorsCentersView(park: park)
+					} label: {
+						Text("Check visitor centers")
+						Image(systemName: "chevron.right")
+					}
+					.buttonStyle(.borderedProminent)
+					.tint(.parkPurple)
 					
 				}
 				Spacer()

@@ -16,11 +16,12 @@ struct NetworkService {
 		])
 	}
 
-	static func getCenters(startFrom: Int) async throws -> VisitorsCenterResponse {
+	static func getCenters(for parkId: String, startFrom: Int) async throws -> VisitorsCenterResponse {
 		return try await Network.getData(path: "visitorcenters", queryItems: [
 			"api_key": "jMBaI2955tbErPhY8b6I7fMBmTIb4xUoLP4cMrl3",
 			"limit": String(20),
-			"start": String(startFrom)
+			"start": String(startFrom),
+			"parkCode": parkId
 		])
 	}
 }

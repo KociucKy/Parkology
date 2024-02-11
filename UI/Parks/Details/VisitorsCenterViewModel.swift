@@ -19,16 +19,16 @@ final class VisitorsCenterViewModel {
 	private var startFrom: Int = 0
 
 	@MainActor
-	func getData() async throws {
-		centers = try await repository.getCenters().data
+	func getData(for parkId: String) async throws {
+		centers = try await repository.getCenters(for: parkId).data
 	}
 
 	// TODO: - Maybe change this to async func
 	@MainActor
-	func loadMore(_ center: VisitorCenter) {
+	func loadMore(_ center: VisitorCenter, for parkId: String) {
 		Task {
 			startFrom += 20
-			let moreCenters = try await repository.getCenters(startFrom: startFrom).data
+			let moreCenters = try await repository.getCenters(for: parkId, startFrom: startFrom).data
 			centers.append(contentsOf: moreCenters)
 		}
 	}
