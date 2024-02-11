@@ -34,6 +34,7 @@ struct ParksView: View {
 					ProgressView("Loading data")
 				}
 			}
+			.navigationTitle("Parks")
 			.task {
 				try? await viewModel.getData()
 			}

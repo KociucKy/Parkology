@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct ParkingLotResponse: Codable {
-	var total: String
-	var data: [ParkingLot]
-	var limit, start: String
-}
-
 struct ParkingLot: Codable, Identifiable, Hashable {
 	static func == (lhs: ParkingLot, rhs: ParkingLot) -> Bool {
 		lhs.id == rhs.id
