@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ParkDetailsView: View {
+	@Environment(\.modelContext) private var context
+	@Query private var favoriteParks: [SDPark]
+	@State private var isInFavorites: Bool = false
 	let park: Park
 	
 	var body: some View {
@@ -48,6 +52,18 @@ struct ParkDetailsView: View {
 					}
 					.buttonStyle(.borderedProminent)
 					.tint(.parkPurple)
+					Button {
+						if isInFavorites {
+							deleteFromFavorites()
+						} else {
+							addParkToFavorites()
+						}
+					} label: {
+						Image(systemName: isInFavorites ? "trash.fill" : "plus.circle.fill")
+						Text(isInFavorites ? "Delete from favorites" : "Add to favorites")
+					}
+					.buttonStyle(.borderedProminent)
+					.tint(.parkPurple)
 				}
 				Spacer()
 			}
@@ -55,17 +71,26 @@ struct ParkDetailsView: View {
 		.padding(.horizontal)
 		.navigationTitle(park.name)
 		.navigationBarTitleDisplayMode(.inline)
-		.toolbar {
-			ToolbarItem(placement: .bottomBar) {
-				Button {
-					
-				} label: {
-					Image(systemName: "plus.circle.fill")
-					Text("Add to favorites")
-				}
-				.buttonStyle(.borderedProminent)
-				.tint(.parkPurple)
+		.onAppear {
+			if let _ = favoriteParks.first(where: {$0.id == park.id}) {
+				isInFavorites = true
+			} else {
+				isInFavorites = false
 			}
+		}
+	}
+
+	private func addParkToFavorites() {
+		let sdPark = SDPark(id: park.id, name: park.fullName, imageUrl: park.images.first?.url)
+		context.insert(sdPark)
+		isInFavorites = true
+	}
+
+	private func deleteFromFavorites() {
+		let parkToDelete = favoriteParks.first(where: {$0.id == park.id})
+		if let parkToDelete {
+			context.delete(parkToDelete)
+			isInFavorites = false
 		}
 	}
 }
