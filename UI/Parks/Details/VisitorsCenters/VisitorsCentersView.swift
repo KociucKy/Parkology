@@ -16,10 +16,13 @@ struct VisitorsCentersView: View {
 		ScrollView {
 			LazyVStack {
 				ForEach(viewModel.centers) { center in
-					VisitorsCenterRowView(center: center)
+					ParkSpecificInfoRowView(
+						imageUrl: center.images.first?.url,
+						name: center.name
+					)
 						.onAppear {
 							if center.id == viewModel.centers.last!.id {
-								viewModel.loadMore(for: park.id)
+								viewModel.loadMore(for: park.parkCode)
 							}
 						}
 				}
@@ -30,7 +33,7 @@ struct VisitorsCentersView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.task {
 			do {
-				try await viewModel.getData(for: park.id)
+				try await viewModel.getData(for: park.parkCode)
 			} catch {
 				print(error)
 			}

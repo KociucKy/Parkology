@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct VisitorsCenterRowView: View {
-	let center: VisitorCenter
+struct ParkSpecificInfoRowView: View {
+	let imageUrl: String?
+	let name: String
 	
 	var body: some View {
 		HStack(spacing: 16) {
-			if let url = center.images.first?.url {
-				AsyncImage(url: URL(string: url)) { image in
+			if let imageUrl {
+				AsyncImage(url: URL(string: imageUrl)) { image in
 					image
 						.resizable()
 						.scaledToFit()
@@ -25,7 +26,7 @@ struct VisitorsCenterRowView: View {
 			} else {
 				placeholderImage
 			}
-			Text(center.name)
+			Text(name)
 				.font(.headline)
 			Spacer()
 		}
@@ -44,5 +45,5 @@ struct VisitorsCenterRowView: View {
 }
 
 #Preview {
-	VisitorsCenterRowView(center: VisitorCenter.previews)
+	ParkSpecificInfoRowView(imageUrl: "", name: "Cool place")
 }

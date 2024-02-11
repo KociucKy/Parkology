@@ -40,7 +40,14 @@ struct ParkDetailsView: View {
 					}
 					.buttonStyle(.borderedProminent)
 					.tint(.parkPurple)
-					
+					NavigationLink {
+						ParkingLotsView(park: park)
+					} label: {
+						Text("Check parking lots")
+						Image(systemName: "chevron.right")
+					}
+					.buttonStyle(.borderedProminent)
+					.tint(.parkPurple)
 				}
 				Spacer()
 			}

@@ -24,4 +24,13 @@ struct NetworkService {
 			"parkCode": parkId
 		])
 	}
+
+	static func getParkingLots(for parkId: String, startFrom: Int) async throws -> ParkingLotResponse {
+		return try await Network.getData(path: "parkinglots", queryItems: [
+			"api_key": "jMBaI2955tbErPhY8b6I7fMBmTIb4xUoLP4cMrl3",
+			"limit": String(20),
+			"start": String(startFrom),
+			"parkCode": parkId
+		])
+	}
 }
