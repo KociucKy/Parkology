@@ -6,7 +6,6 @@
 import Foundation
 import Observation
 
-//TODO: - Error Handling
 @Observable
 final class ParksViewModel {
 	private(set) var parks: [Park] = []

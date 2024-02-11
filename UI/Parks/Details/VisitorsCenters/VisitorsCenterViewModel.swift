@@ -8,7 +8,6 @@
 import Foundation
 import Observation
 
-//TODO: - Error Handling
 @Observable
 final class VisitorsCenterViewModel {
 	private(set) var centers: [VisitorCenter] = []
